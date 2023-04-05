@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0ee8646c-9241-4ddf-85e9-23bb73acd60e" name="Changes" comment="initial commit, project backup" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Flask Main" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/venv/Lib/site-packages/flask/views.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2KlFu4SwtRnOWveuXsVNlVDy8cP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/maxli/PycharmProjects/test_juice_factory_backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="test_juice_factory_backend" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="test_juice_factory_backend" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\maxli\test_juice_factory" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.test_juice_factory_backend">
+    <configuration name="test_juice_factory_backend" type="PythonConfigurationType" factoryName="Python">
+      <module name="test_juice_factory_backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_juice_factory_backend" type="Python.FlaskServer">
+      <option name="flaskDebug" value="true" />
+      <module name="test_juice_factory_backend" />
+      <option name="target" value="$PROJECT_DIR$/app.py" />
+      <option name="targetType" value="PATH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\maxli\PycharmProjects\test_juice_factory_backend\venv\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Python 3.10 (test_juice_factory_backend)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0ee8646c-9241-4ddf-85e9-23bb73acd60e" name="Changes" comment="" />
+      <created>1674541481454</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1674541481454</updated>
+      <workItem from="1674541495317" duration="1363000" />
+      <workItem from="1674584839828" duration="5267000" />
+      <workItem from="1674725231697" duration="4282000" />
+      <workItem from="1674735874750" duration="626000" />
+      <workItem from="1674803469128" duration="8937000" />
+      <workItem from="1674907941552" duration="25294000" />
+      <workItem from="1674983295405" duration="7255000" />
+      <workItem from="1675070978371" duration="13463000" />
+      <workItem from="1675155583705" duration="6216000" />
+      <workItem from="1675176818204" duration="11928000" />
+      <workItem from="1675244821003" duration="18905000" />
+      <workItem from="1676114020218" duration="2791000" />
+      <workItem from="1676379117333" duration="4411000" />
+      <workItem from="1676388049592" duration="5433000" />
+      <workItem from="1676459004225" duration="11341000" />
+      <workItem from="1676562313442" duration="7530000" />
+      <workItem from="1676638461155" duration="4547000" />
+      <workItem from="1676722122336" duration="11546000" />
+      <workItem from="1676812419242" duration="13564000" />
+      <workItem from="1676979086400" duration="10441000" />
+      <workItem from="1677078921164" duration="1813000" />
+      <workItem from="1677095010586" duration="3049000" />
+      <workItem from="1677688734072" duration="3341000" />
+      <workItem from="1677755616445" duration="6273000" />
+      <workItem from="1677860409780" duration="12670000" />
+      <workItem from="1678280848159" duration="2996000" />
+      <workItem from="1678283927424" duration="1042000" />
+      <workItem from="1678285175698" duration="687000" />
+      <workItem from="1678285884024" duration="5099000" />
+      <workItem from="1678300733485" duration="4694000" />
+      <workItem from="1678306144047" duration="498000" />
+      <workItem from="1678306968469" duration="4905000" />
+      <workItem from="1678356219212" duration="2382000" />
+      <workItem from="1678375843595" duration="5716000" />
+      <workItem from="1678384397647" duration="777000" />
+      <workItem from="1678390954282" duration="6725000" />
+      <workItem from="1678530477717" duration="2262000" />
+      <workItem from="1678533141111" duration="78000" />
+      <workItem from="1678996417784" duration="23000" />
+      <workItem from="1679921767379" duration="8169000" />
+      <workItem from="1680167179737" duration="7043000" />
+      <workItem from="1680432574085" duration="4521000" />
+      <workItem from="1680612914277" duration="3762000" />
+      <workItem from="1680621372456" duration="113000" />
+      <workItem from="1680698537580" duration="2262000" />
+    </task>
+    <task id="LOCAL-00001" summary="initial commit, project backup">
+      <created>1680700507854</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680700507854</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit, project backup" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit, project backup" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Python.FlaskServer">
+        <watch expression="images[1]" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/test_juice_factory_backend$test_juice_factory_backend.coverage" NAME="test_juice_factory_backend Coverage Results" MODIFIED="1680436333056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/testFlaskBackEnd$testFlaskBackEnd.coverage" NAME="testFlaskBackEnd Coverage Results" MODIFIED="1678280856305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

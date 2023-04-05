@@ -1,0 +1,8 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "SWAGGER_UI for Flask Back End Test ",
+    "version": "1.0.0",
+    "title": "testFlaskBackEnd"
+  }
+}
