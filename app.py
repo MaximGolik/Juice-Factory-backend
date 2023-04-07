@@ -12,8 +12,8 @@ from werkzeug.utils import secure_filename
 from config import BaseConfig
 
 from resource.images import Images
-from resource.users import UserRegister, UserMethods, UserLogin, RefreshToken,\
-                           UserMakeAdmin, UserProperties
+from resource.users import UserRegister, UserMethods, UserLogin, RefreshToken, \
+    UserCreateAdmin, ProfileMethods
 from resource.items import Item, ItemList
 from resource.order import Order, OrdersList, OrdersOneUser
 from db import db
@@ -27,17 +27,6 @@ api = Api(app)
 app.config.from_object(BaseConfig())
 
 ALLOWED_EXTENSIONS = {"jpg", "png", "bmp", "jpeg"}
-
-# app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:postgres@localhost/flask_store_db.db"
-# app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:postgres@localhost:5433/flask_store_db"
-# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-# app.config["PROPAGATE_EXCEPTIONS"] = True
-# app.config["UPLOAD_FOLDER"] = "static/images/"
-# app.config['MAX_CONTENT_PATH'] = 10*1024*1024
-
-# @app.before_first_request
-# def create_tables():
-#     db.create_all()
 
 db.init_app(app)
 with app.app_context():
@@ -105,13 +94,14 @@ api.add_resource(Item, "/item")
 api.add_resource(ItemList, "/items-all")
 api.add_resource(UserRegister, "/register")
 api.add_resource(UserMethods, "/user")
-api.add_resource(UserMakeAdmin, "/user-make-admin")
+api.add_resource(UserCreateAdmin, "/user-make-admin")
 api.add_resource(UserLogin, "/auth")
-api.add_resource(UserProperties, "/user/<int:id>")
 api.add_resource(RefreshToken, "/refresh")
 api.add_resource(Order, "/order")
 api.add_resource(Images, "/image-upload")
 api.add_resource(OrdersOneUser, '/users-orders')
+# todo переписать фронт под метод с /profile
+api.add_resource(ProfileMethods, '/profile')
 
 if __name__ == '__main__':
     api.init_app(app)

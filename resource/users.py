@@ -34,6 +34,8 @@ class UserRegister(Resource):
             return {"msg": "Phone number is already used"}, 400
         if User.find_by_email(email):
             return {"msg": "Email is already used"}, 400
+        if len(str(phone_number)) < 11:
+            return {'msg': 'Phone number is too short'}, 400
         user = User(phone_number, password, first_name, email)
         user.save_to_db()
         return {'msg': "User successfully registered"}, 201
@@ -48,8 +50,10 @@ class UserLogin(Resource):
         phone_number = data.phone_number
         password = data.password
         user = User.find_by_phone_number(phone_number)
+        if not user:
+            return {"msg": "Wrong credits"}, 401
         if not User.check_password(phone_number, password):
-            return {"msg": 'Wrong password'}, 400
+            return {"msg": 'Wrong password'}, 401
         if user and User.check_password(phone_number, password):
             access_token = create_access_token(identity=user.id, fresh=True)
             refresh_token = create_refresh_token(identity=user.id)
@@ -58,13 +62,11 @@ class UserLogin(Resource):
                 "refresh_token": refresh_token,
                 "first_name": user.first_name
             }, 200
-        return {"msg": "Wrong credits"}, 400
 
 
-class UserMakeAdmin(Resource):
+class UserCreateAdmin(Resource):
     @classmethod
     def put(cls):
-        # todo убрать хардкод на тестах
         email = "testAdmin@gmail.com"
         password = 'AdminPassword'
         phone_number = '73432341234'
@@ -80,50 +82,47 @@ class UserMakeAdmin(Resource):
             return {"msg": "Email already used"}, 400
         user = User(phone_number, password, first_name, email, isAdmin=True)
         user.save_to_db()
-        return {'msg', "Admin is added"}, 201
+        return {'msg': "Admin is added"}, 201
 
 
 class UserMethods(Resource):
     @classmethod
     @jwt_required()
     def get(cls):
-        user_id = get_jwt_identity()
-        user = User.find_by_id(user_id=user_id)
+        user_id = request.args['user_id']
+        check_user_id = get_jwt_identity()
+        check_user = User.find_by_id(check_user_id)
+        if not check_user.isAdmin:
+            return {'msg': 'You need to be an admin'}, 403
+        user = User.find_by_id(user_id)
         if not user:
             return {"msg": "User not found"}, 404
         return user_schema.dump(user), 200
 
     @classmethod
-    def delete(cls, user_id):
+    @jwt_required()
+    def delete(cls):
+        user_id = request.args['user_id']
         user = User.find_by_id(user_id)
+        admin_id = get_jwt_identity()
+        admin = User.find_by_id(admin_id)
+        if not admin.isAdmin:
+            return {'msg': 'You need to an admin'}, 403
         if not user:
             return {"msg": "User not found"}, 404
         user.delete_from_db()
+        return {"msg": "User deleted successfully"}, 200
 
-        return {"msg": "user deleted successfully"}
-
-
-class RefreshToken(Resource):
-    @jwt_required(refresh=True)
-    def post(self):
-        current_user = get_jwt_identity()
-        if not current_user:
-            return {"User not found"}, 401
-        new_jwt_token = create_access_token(identity=current_user, fresh=False)
-        return {
-            "access_token": new_jwt_token
-        }
-
-
-class UserProperties(Resource):
+    @classmethod
     @jwt_required()
-    def put(self, id):
-        user_id = get_jwt_identity()
-        user_check = User.find_by_id(user_id)
-        if str(user_id) != id:
+    def put(cls):
+        user_id = request.args['user_id']
+        requester_id = get_jwt_identity()
+        user_check = User.find_by_id(requester_id)
+        if not user_check.id == requester_id:
             if not user_check.isAdmin:
-                return {"msg": "Access denied"}, 401
-        user = User.find_by_id(id)
+                return {"msg": "You need to be an admin or it should be your profile"}, 403
+        user = User.find_by_id(user_id)
         if not user:
             return {"msg": "User not found"}, 404
         parser = reqparse.RequestParser()
@@ -145,3 +144,25 @@ class UserProperties(Resource):
             user.phone_number = data["phone_number"]
         user.save_to_db()
         return {"msg": "User updated"}, 200
+
+
+class ProfileMethods(Resource):
+    @jwt_required()
+    def post(self):
+        user_id = get_jwt_identity()
+        user = User.find_by_id(user_id)
+        if not user:
+            return {"msg": "User not found"}, 404
+        return user_schema.dump(user), 200
+
+
+class RefreshToken(Resource):
+    @jwt_required(refresh=True)
+    def post(self):
+        current_user = get_jwt_identity()
+        if not current_user:
+            return {"User not found"}, 401
+        new_jwt_token = create_access_token(identity=current_user, fresh=False)
+        return {
+            "access_token": new_jwt_token
+        }
