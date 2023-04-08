@@ -38,6 +38,26 @@ def login_as_user(client):
 
 
 @pytest.fixture
+def login_as_another_user(client):
+    data_login = {'phone_number': '79877321111', 'password': 'testPassword'}
+    login_response = client.post('/auth', json=data_login)
+    response_data = login_response.json
+    if not 'access_token' in response_data:
+        data_registration = {
+            'phone_number': '79877321111',
+            'password': 'testPassword',
+            "first_name": "Another Александр",
+            "email": "anotherEmail@gmail.com"
+        }
+        client.post("/register", json=data_registration)
+        login_response = client.post('/auth', json=data_login)
+        response_data = login_response.json
+        assert 'access_token' in response_data
+    access_token = response_data['access_token']
+    return access_token
+
+
+@pytest.fixture
 def login_as_admin(client):
     data = {'phone_number': '73432341234', 'password': 'AdminPassword'}
     client.put("/user-make-admin")
@@ -46,3 +66,32 @@ def login_as_admin(client):
     assert 'access_token' in response_data
     access_token = response_data['access_token']
     return access_token
+
+
+@pytest.fixture()
+def add_item(client, login_as_admin):
+    data = {
+        "title": "Апельсиновый сок",
+        "description": "Просто неплохой апельсиновый сок",
+        "price": 130,
+        "quantity": 100
+    }
+    access_token = login_as_admin
+    headers = {
+        'Authorization': 'Bearer ' + access_token
+    }
+    response = client.post('/item', json=data, headers=headers)
+    return response.status_code
+
+
+@pytest.fixture()
+def add_order(client, login_as_user, add_item):
+    data = {'items': [{"name": "Апельсиновый сок", "qty": 1}]}
+    user_access_token = login_as_user
+    assert add_item == 201
+    headers = {
+        'Authorization': 'Bearer ' + user_access_token
+    }
+    response = client.post('/order', json=data, headers=headers)
+    assert response.status_code == 201
+    return response.status_code

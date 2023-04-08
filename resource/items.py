@@ -12,7 +12,7 @@ item_list_schema = ItemSchema(many=True)
 
 class ItemList(Resource):
     def get(self):
-        return item_list_schema.dump(ItemModel.find_all())
+        return item_list_schema.dump(ItemModel.find_all()), 200
 
 
 class Item(Resource):
@@ -66,14 +66,15 @@ class Item(Resource):
         price = data["price"]
         quantity = data["quantity"]
         item = ItemModel.find_by_id(item_id)
+        if not item:
+            return {"msg": "Item not found"}, 404
         if item:
             item.price = price
             item.title = title
             item.description = description
             item.quantity = quantity
-        else:
-            return item.json()
-
+        # else:
+        #     return item.json()
         item.save_to_db()
 
         return item_schema.dump(item), 200
