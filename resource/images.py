@@ -21,7 +21,7 @@ class Images(Resource):
         item_id = request.args['item_id']
         item = Item.find_by_id(item_id=str(item_id))
         if not item:
-            return {"msg": "Item for picture not found"}
+            return {"msg": "Item for picture not found"}, 404
         images = item.get_images()
         buffer = io.BytesIO()
         with zipfile.ZipFile(buffer, 'w') as z:
@@ -31,7 +31,7 @@ class Images(Resource):
                 z.writestr(image.filename, image_data)
         buffer.seek(0)
         return Response(image_data, content_type='image/jpeg')
-        # return Response(buffer.read(), content_type='application/zip')
+
     @jwt_required()
     def post(self):
         user_id = get_jwt_identity()
@@ -40,28 +40,16 @@ class Images(Resource):
             item_id = request.values['item_id']
             item = Item.find_by_id(item_id=str(item_id))
             if not item:
-                return {"msg": "Item for picture not found"}
+                return {"msg": "Item for picture not found"}, 404
             f = request.files['file']
             extension = {f.filename.split(".")[1]}
             if extension.issubset(ALLOWED_EXTENSIONS):
                 filename = secure_filename(f.filename)
-                f.save(UPLOAD_FOLDER+filename)
+                f.save(UPLOAD_FOLDER + filename)
                 image = (ImagesForItem(item_id=item_id, filename=filename))
                 item.images.append(image)
                 item.save_to_db()
-                return {"msg": "Image has been loaded"}
-            return {"msg": "Image's extension isn't allowed"}
-        return {'msg': "You need to be an admin"}
+                return {"msg": "Image has been loaded"}, 200
+            return {"msg": "Image's extension isn't allowed"}, 400
+        return {'msg': "You need to be an admin"}, 403
 
-#
-# class ImagesStatic(Resource):
-#     def get(self):
-#         item_id = request.args['item_id']
-#         item = Item.find_by_id(item_id=str(item_id))
-#         if not item:
-#             return {"msg": "Item for picture not found"}
-#         images = item.get_images()
-#         image_url = safe_join(UPLOAD_FOLDER+images[0].filename)
-#         result = send_file(image_url, mimetype='image/png')
-#         result.headers.add('Access-Control-Allow-Origin', '*')
-#         return result

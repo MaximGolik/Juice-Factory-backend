@@ -18,7 +18,7 @@ class User(db.Model):
     isAdmin = db.Column(db.Boolean, default=False)
     active = db.Column(db.Boolean, default=False)
 
-    def __init__(self, phone_number, password, first_name=None, email=None, active=False, isAdmin = False):
+    def __init__(self, phone_number, password, first_name=None, email=None, active=False, isAdmin=False):
         self.phone_number = phone_number
         self.password = password
         self.first_name = first_name
