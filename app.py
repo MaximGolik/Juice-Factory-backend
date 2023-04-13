@@ -1,12 +1,15 @@
+import json
+
+
 from flask import Flask, jsonify, request, send_from_directory
 import flask_bcrypt
 from flask_cors import CORS
 from flask_mail import Mail
 from flask_restful import Resource, Api, reqparse
 from flask_jwt_extended import JWTManager
-from flask_swagger_ui import get_swaggerui_blueprint
 import os.path
 
+from flask_swagger_ui import get_swaggerui_blueprint
 from jwt import ExpiredSignatureError
 from werkzeug.utils import secure_filename
 from config import BaseConfig
@@ -17,7 +20,6 @@ from resource.users import UserRegister, UserMethods, UserLogin, RefreshToken, \
 from resource.items import Item, ItemList
 from resource.order import Order, OrdersList, OrdersOneUser
 from db import db
-
 
 from marsh import ma
 
@@ -53,19 +55,20 @@ def expired_token_callback():
         "error": "token_expired"
     }), 401
 
-@jwt.invalid_token_loader
-def invalid_token_callback(error):
-    return jsonify({
-        "description": "Signature Invalid",
-        "error": "invalid_token"
-    }), 401
-
 
 @jwt.unauthorized_loader
 def unauthorized_token(error):
     return jsonify({
         "description": "jwt token not found",
         "error": "token_missing"
+    }), 401
+
+
+@jwt.invalid_token_loader
+def invalid_token_callback(error):
+    return jsonify({
+        "description": "Signature Invalid",
+        "error": "invalid_token"
     }), 401
 
 
@@ -85,11 +88,6 @@ def revoked_token():
     }), 401
 
 
-@app.route('/static/<path:path>')
-def send_static(path):
-    return send_from_directory('static', path)
-
-
 api.add_resource(Item, "/item")
 api.add_resource(ItemList, "/items-all")
 api.add_resource(UserRegister, "/register")
@@ -103,6 +101,25 @@ api.add_resource(OrdersOneUser, '/users-orders')
 api.add_resource(OrdersList, '/orders-all')
 # todo переписать фронт под метод с /profile
 api.add_resource(ProfileMethods, '/profile')
+
+
+# Часть кода от сваггера прописанного в json
+SWAGGER_URL = '/api/docs'  # URL for exposing Swagger UI (without trailing '/')
+API_URL = '/static/swagger.json'  # Our API url (can of course be a local resource)
+# Call factory function to create our blueprint
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,  # Swagger UI static files will be mapped to '{SWAGGER_URL}/dist/'
+    API_URL,
+    config={  # Swagger UI config overrides
+        'app_name': "Juice Store Backend API"
+    })
+app.register_blueprint(swaggerui_blueprint)
+
+
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('static', path)
+
 
 if __name__ == '__main__':
     api.init_app(app)

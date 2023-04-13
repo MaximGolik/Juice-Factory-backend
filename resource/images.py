@@ -21,7 +21,7 @@ class Images(Resource):
         item_id = request.args['item_id']
         item = Item.find_by_id(item_id=str(item_id))
         if not item:
-            return {"msg": "Item for picture not found"}
+            return {"msg": "Item for picture not found"}, 404
         images = item.get_images()
         buffer = io.BytesIO()
         with zipfile.ZipFile(buffer, 'w') as z:
@@ -45,7 +45,7 @@ class Images(Resource):
             extension = {f.filename.split(".")[1]}
             if extension.issubset(ALLOWED_EXTENSIONS):
                 filename = secure_filename(f.filename)
-                f.save(UPLOAD_FOLDER+filename)
+                f.save(UPLOAD_FOLDER + filename)
                 image = (ImagesForItem(item_id=item_id, filename=filename))
                 item.images.append(image)
                 item.save_to_db()

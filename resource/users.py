@@ -66,7 +66,7 @@ class UserLogin(Resource):
 
 class UserCreateAdmin(Resource):
     @classmethod
-    def put(cls):
+    def post(cls):
         email = "testAdmin@gmail.com"
         password = 'AdminPassword'
         phone_number = '73432341234'
@@ -148,7 +148,7 @@ class UserMethods(Resource):
 
 class ProfileMethods(Resource):
     @jwt_required()
-    def post(self):
+    def get(self):
         user_id = get_jwt_identity()
         user = User.find_by_id(user_id)
         if not user:
@@ -158,11 +158,13 @@ class ProfileMethods(Resource):
 
 class RefreshToken(Resource):
     @jwt_required(refresh=True)
-    def post(self):
+    def get(self):
         current_user = get_jwt_identity()
         if not current_user:
             return {"User not found"}, 401
-        new_jwt_token = create_access_token(identity=current_user, fresh=False)
+        new_access_token = create_access_token(identity=current_user, fresh=False)
+        new_refresh_token = create_refresh_token(identity=current_user)
         return {
-            "access_token": new_jwt_token
+            "access_token": new_access_token,
+            "refresh_token": new_refresh_token
         }
