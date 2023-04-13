@@ -56,7 +56,7 @@ def test_login_user_negative(client, data, expected_response, expected_code):
 
 
 def test_create_admin(client):
-    response = client.put("/user-make-admin")
+    response = client.post("/user-make-admin")
     assert response.status_code == 201
     assert response.json == {'msg': "Admin is added"}
 
@@ -157,5 +157,5 @@ def test_get_user_profile_successful(client, login_as_user):
     headers = {
         'Authorization': 'Bearer ' + access_token
     }
-    response = client.post('/profile?user_id=1', headers=headers)
+    response = client.get('/profile?user_id=1', headers=headers)
     assert response.status_code == 200

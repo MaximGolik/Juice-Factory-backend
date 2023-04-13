@@ -60,7 +60,7 @@ def login_as_another_user(client):
 @pytest.fixture
 def login_as_admin(client):
     data = {'phone_number': '73432341234', 'password': 'AdminPassword'}
-    client.put("/user-make-admin")
+    client.post("/user-make-admin")
     login_response = client.post('/auth', json=data)
     response_data = login_response.json
     assert 'access_token' in response_data
