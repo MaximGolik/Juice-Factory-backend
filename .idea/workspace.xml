@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ee8646c-9241-4ddf-85e9-23bb73acd60e" name="Changes" comment="swagger added">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/test_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/test_users.py" afterDir="false" />
-    </list>
+    <list default="true" id="0ee8646c-9241-4ddf-85e9-23bb73acd60e" name="Changes" comment="unit tests fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,7 +87,7 @@
       <recent name="C:\Users\maxli\test_juice_factory" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test_juice_factory_backend">
+  <component name="RunManager" selected="Flask server.test_juice_factory_backend">
     <configuration name="test_juice_factory_backend" type="PythonConfigurationType" factoryName="Python">
       <module name="test_juice_factory_backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -330,7 +325,7 @@
       <workItem from="1681133229658" duration="18567000" />
       <workItem from="1681201195274" duration="7972000" />
       <workItem from="1681293740946" duration="252000" />
-      <workItem from="1681383532060" duration="3490000" />
+      <workItem from="1681383532060" duration="3651000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit, project backup">
       <created>1680700507854</created>
@@ -374,7 +369,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681383817704</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="unit tests fix">
+      <created>1681387143917</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1681387143917</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,7 +411,8 @@
     <MESSAGE value="unit tests for user, users resource refactor" />
     <MESSAGE value="unit tests for items and orders, items and order api refactor" />
     <MESSAGE value="swagger added" />
-    <option name="LAST_COMMIT_MESSAGE" value="swagger added" />
+    <MESSAGE value="unit tests fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="unit tests fix" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
