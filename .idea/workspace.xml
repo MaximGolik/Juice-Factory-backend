@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ee8646c-9241-4ddf-85e9-23bb73acd60e" name="Changes" comment="unit tests fix" />
+    <list default="true" id="0ee8646c-9241-4ddf-85e9-23bb73acd60e" name="Changes" comment="readme adjust" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -326,6 +326,7 @@
       <workItem from="1681201195274" duration="7972000" />
       <workItem from="1681293740946" duration="252000" />
       <workItem from="1681383532060" duration="3651000" />
+      <workItem from="1681406231094" duration="313000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit, project backup">
       <created>1680700507854</created>
@@ -376,7 +377,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681387143917</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="readme adjust">
+      <created>1681406388625</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1681406388625</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,7 +420,8 @@
     <MESSAGE value="unit tests for items and orders, items and order api refactor" />
     <MESSAGE value="swagger added" />
     <MESSAGE value="unit tests fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="unit tests fix" />
+    <MESSAGE value="readme adjust" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme adjust" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
