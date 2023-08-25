@@ -395,7 +395,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Получить все заказы",
+        "summary": "Получить все заказы пользователя",
         "responses": {
           "404": {
             "description": "Пользователь не найден"
@@ -405,6 +405,37 @@
           },
           "200": {
             "description": "Получен список заказов"
+          }
+        }
+      }
+    },
+    "/order": {
+      "post": {
+        "tags": ["Orders"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostOrder"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Добавить заказ",
+        "responses": {
+          "404": {
+            "description": "Item is not present / We don't have enough."
+          },
+          "400": {
+            "description": "Пользователь не найден"
+          },
+          "201": {
+            "description": "Заказ сделан"
           }
         }
       }
@@ -634,6 +665,26 @@
           "quantity": {
             "type": "integer",
             "example": 100
+          }
+        }
+      },
+      "PostOrder": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "properties": {
+                "name": {
+                "type": "string",
+                "example": "Апельсиновый сок"
+                },
+                "qty": {
+                "type": "integer",
+                "example": 10
+                }
+              }
+            }
           }
         }
       },
