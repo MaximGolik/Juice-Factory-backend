@@ -56,6 +56,10 @@
 
 `pytest --cov --cov-report=html`
 
+Для получения отчета в Allure:
+pytest -v -s --alluredir results
+allure serve results
+
 HTML отчет можно открыть в браузере, он находится в `htmlcov/index.html`
 
 ## Контакты
