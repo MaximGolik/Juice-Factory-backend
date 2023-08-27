@@ -1,6 +1,12 @@
+import allure
 import pytest
 
+from tests.baseclasses.response import Response
+from tests.schemas import users_schemas
 
+
+@allure.feature('Тестирование методов пользователей')
+@allure.title('Регистрация пользователя')
 @pytest.mark.parametrize('data, expected_response, expected_code', [
     ({'phone_number': '79874321348', 'password': 'testPassword', 'first_name': 'Alexey', 'email': 'makarov1@gmail.com'}
      , {'msg': "User successfully registered"}
@@ -23,73 +29,85 @@ import pytest
      , 400)
 ])
 def test_register_user(client, data, expected_response, expected_code):
-    response = client.post("/register", json=data)
-    assert response.json == expected_response
-    assert response.status_code == expected_code
+    response = Response(client.post("/register", json=data))
+    response.assert_status_code(expected_code)
 
 
+@allure.feature('Тестирование методов пользователей')
+@allure.title('Авторизация пользователя')
 @pytest.mark.parametrize('data, expected_code', [
-    ({'phone_number': '79874321348', 'password': 'testPassword'},
+    ({'phone_number': '79877321243', 'password': 'testPassword'},
      200
      )
 ])
-def test_login_user_positive(client, data, expected_code):
-    response = client.post('/auth', json=data)
-    assert response.status_code == expected_code
+def test_login_user_positive(client, data, expected_code, login_as_user):
+    response = Response(client.post('/auth', json=data))
+    response.validate(users_schemas.UserAuthModel)
+    response.assert_status_code(expected_code)
 
 
+
+@allure.feature('Тестирование методов пользователей')
+@allure.title('Неудачная авторизация пользователя')
 @pytest.mark.parametrize('data, expected_response, expected_code', [
     ({'phone_number': '79874321123', 'password': 'testPassword'},
      {"msg": 'Wrong credits'},
      401
      )
     ,
-    ({'phone_number': '79874321348', 'password': 'testPassword1'},
+    ({'phone_number': '79877321243', 'password': 'testPassword1'},
      {"msg": 'Wrong password'},
      401
      )
 ])
-def test_login_user_negative(client, data, expected_response, expected_code):
-    response = client.post('/auth', json=data)
-    assert response.json == expected_response
-    assert response.status_code == expected_code
+def test_login_user_negative(client, data, expected_response, expected_code, login_as_user):
+    response = Response(client.post('/auth', json=data))
+    assert response.assert_status_code(expected_code)
+    assert response.response_json == expected_response
 
 
+@allure.feature('Тестирование методов пользователей')
+@allure.title('Создание админа')
 def test_create_admin(client):
-    response = client.post("/user-make-admin")
-    assert response.status_code == 201
-    assert response.json == {'msg': "Admin is added"}
+    response = Response(client.post("/user-make-admin"))
+    assert response.response_json == {'msg': "Admin is added"}
+    response.assert_status_code(201)
 
 
+@allure.feature('Тестирование методов пользователей')
+@allure.title('Удаление пользователя')
 @pytest.mark.parametrize('expected_message, expected_code', [({"msg": "User deleted successfully"}, 200)])
-def test_delete_user_positive(client, expected_message, expected_code, login_as_admin):
+def test_delete_user_positive(client, expected_message, expected_code, login_as_admin, login_as_user):
     access_token = login_as_admin
     headers = {
         'Authorization': 'Bearer ' + access_token
     }
-    delete_response = client.delete('user?user_id=1', headers=headers)
-    assert delete_response.json == expected_message
-    assert delete_response.status_code == expected_code
+    response = Response(client.delete('user?user_id=1', headers=headers))
+    assert response.response_json == expected_message
+    response.assert_status_code(expected_code)
 
 
-@pytest.mark.parametrize('data, expected_message, expected_code', [
-    ({'phone_number': '79874321349', 'password': 'testPassword'}, {'msg': 'You need to an admin'}, 403)
-    ,
-    ({'phone_number': '73432341234', 'password': 'AdminPassword'}, {"msg": "User not found"}, 404)
+@allure.feature('Тестирование методов пользователей')
+@allure.title('Неудачное удаление пользователя')
+@pytest.mark.parametrize('expected_message, expected_code, access_token_type', [
+    ({'msg': 'You need to an admin'}, 403, 'user'),
+    ({"msg": "User not found"}, 404, 'admin')
 ])
-def test_delete_user_negative(client, data, expected_message, expected_code):
-    login_response = client.post('/auth', json=data)
-    response_data = login_response.json
-    assert 'access_token' in response_data
-    access_token = response_data['access_token']
-    headers = {
-        'Authorization': 'Bearer ' + access_token
-    }
-    delete_response = client.delete('user?user_id=99', headers=headers)
-    assert delete_response.json == expected_message
-    assert delete_response.status_code == expected_code
+def test_delete_user_negative(client, expected_message, expected_code, login_as_user, login_as_admin, access_token_type):
+        if access_token_type == 'user':
+            access_token = login_as_user
+        if access_token_type == 'admin':
+            access_token = login_as_admin
+        headers = {
+            'Authorization': 'Bearer ' + access_token
+        }
+        response = Response(client.delete('user?user_id=99', headers=headers))
+        assert response.assert_status_code(expected_code)
+        assert response.response_json == expected_message
 
 
+@allure.feature('Тестирование методов пользователей')
+@allure.title('Неудачно получить пользователя')
 @pytest.mark.parametrize('expected_message, expected_code', [({"msg": "You need to be an admin"}, 403)
 ])
 def test_get_user_negative(client, expected_code, expected_message, login_as_user):
@@ -97,21 +115,26 @@ def test_get_user_negative(client, expected_code, expected_message, login_as_use
     headers = {
         'Authorization': 'Bearer ' + access_token
     }
-    response = client.get('/user?user_id=1', headers=headers)
-    assert response.json == expected_message
-    assert response.status_code == expected_code
+    response = Response(client.get('/user?user_id=1', headers=headers))
+    assert response.response_json == expected_message
+    assert response.assert_status_code(expected_code)
 
 
+@allure.feature('Тестирование методов пользователей')
+@allure.title('Получить пользователя')
 @pytest.mark.parametrize('expected_code', [200])
-def test_get_user_positive(client, expected_code, login_as_admin):
+def test_get_user_positive(client, expected_code, login_as_user, login_as_admin):
     access_token = login_as_admin
     headers = {
         'Authorization': 'Bearer ' + access_token
     }
-    response = client.get('/user?user_id=2 ', headers=headers)
-    assert response.status_code == expected_code
+    response = Response(client.get('/user?user_id=2', headers=headers))
+    response.assert_status_code(expected_code)
+    response.validate(users_schemas.UserGetModel)
 
 
+@allure.feature('Тестирование методов пользователей')
+@allure.title('Обновить информацию пользователя как админ')
 @pytest.mark.parametrize('data, expected_message, expected_code',[
     ({
         "password": "testPassword",
@@ -122,17 +145,18 @@ def test_get_user_positive(client, expected_code, login_as_admin):
      {
         "msg": "User updated"
      }, 200)])
-def test_put_user_positive_as_admin(client, data, login_as_admin, expected_code, expected_message):
+def test_put_user_positive_as_admin(client, data, login_as_user, login_as_admin, expected_code, expected_message):
     access_token = login_as_admin
     headers = {
         'Authorization': 'Bearer ' + access_token
     }
-    response = client.put('/user?user_id=2', json=data, headers=headers)
-    assert response.status_code == expected_code
-    assert response.json == expected_message
+    response = Response(client.put('/user?user_id=2', json=data, headers=headers))
+    response.assert_status_code(expected_code)
+    assert response.response_json == expected_message
 
-
-@pytest.mark.parametrize('data, expected_message, expected_code',[
+@allure.feature('Тестирование методов пользователей')
+@allure.title('Обновить информацию пользователя как пользователь')
+@pytest.mark.parametrize('data, expected_message, expected_code', [
     ({
         "password": "testPassword",
         "first_name": "John",
@@ -142,20 +166,23 @@ def test_put_user_positive_as_admin(client, data, login_as_admin, expected_code,
      {
         "msg": "User updated"
      }, 200)])
-def test_put_user_positive_as_user(client, data, login_as_user, expected_code, expected_message):
+def test_put_user_positive_as_user(client, data, login_as_another_user, login_as_user, expected_code, expected_message):
     access_token = login_as_user
     headers = {
         'Authorization': 'Bearer ' + access_token
     }
-    response = client.put('/user?user_id=2', json=data, headers=headers)
-    assert response.json == expected_message
-    assert response.status_code == expected_code
+    response = Response(client.put('/user?user_id=2', json=data, headers=headers))
+    assert response.response_json == expected_message
+    assert response.assert_status_code(expected_code)
 
 
+@allure.feature('Тестирование методов пользователей')
+@allure.title('Получить профиль пользователя')
 def test_get_user_profile_successful(client, login_as_user):
     access_token = login_as_user
     headers = {
         'Authorization': 'Bearer ' + access_token
     }
-    response = client.get('/profile?user_id=1', headers=headers)
-    assert response.status_code == 200
+    response = Response(client.get('/profile?user_id=1', headers=headers))
+    response.assert_status_code(200)
+    response.validate(users_schemas.UserProfileModel)

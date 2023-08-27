@@ -1,4 +1,5 @@
 # отдельной бд под тесты нет, после тестов удаляется основная
+import allure
 import pytest
 
 from app import app
@@ -6,18 +7,22 @@ from db import db
 
 
 @pytest.fixture(scope="module")
+@allure.title('База данных')
 def client():
     app.config['TESTING'] = True
     with app.test_client() as client:
-        with app.app_context():
-            db.create_all()
+        with allure.step("Инициализация БД"):
+            with app.app_context():
+                db.create_all()
         yield client
-        with app.app_context():
-            db.session.remove()
-            db.drop_all()
+        with allure.step("Удаление БД"):
+            with app.app_context():
+                db.session.remove()
+                db.drop_all()
 
 
-@pytest.fixture
+@pytest.fixture()
+@allure.title('Авторизоваться как пользователь №1')
 def login_as_user(client):
     data_login = {'phone_number': '79877321243', 'password': 'testPassword'}
     login_response = client.post('/auth', json=data_login)
@@ -38,6 +43,7 @@ def login_as_user(client):
 
 
 @pytest.fixture
+@allure.title('Авторизоваться как пользователь №2')
 def login_as_another_user(client):
     data_login = {'phone_number': '79877321111', 'password': 'testPassword'}
     login_response = client.post('/auth', json=data_login)
@@ -57,6 +63,7 @@ def login_as_another_user(client):
     return access_token
 
 
+@allure.title('Авторизоваться как администратор')
 @pytest.fixture
 def login_as_admin(client):
     data = {'phone_number': '73432341234', 'password': 'AdminPassword'}
@@ -69,6 +76,7 @@ def login_as_admin(client):
 
 
 @pytest.fixture()
+@allure.title('Добавить товар')
 def add_item(client, login_as_admin):
     data = {
         "title": "Апельсиновый сок",
@@ -84,6 +92,7 @@ def add_item(client, login_as_admin):
     return response.status_code
 
 
+@allure.title('Добавить заказ')
 @pytest.fixture()
 def add_order(client, login_as_user, add_item):
     data = {'items': [{"name": "Апельсиновый сок", "qty": 1}]}
@@ -95,3 +104,4 @@ def add_order(client, login_as_user, add_item):
     response = client.post('/order', json=data, headers=headers)
     assert response.status_code == 201
     return response.status_code
+

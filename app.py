@@ -99,7 +99,6 @@ api.add_resource(Order, "/order")
 api.add_resource(Images, "/image-upload")
 api.add_resource(OrdersOneUser, '/users-orders')
 api.add_resource(OrdersList, '/orders-all')
-# todo переписать фронт под метод с /profile
 api.add_resource(ProfileMethods, '/profile')
 
 
