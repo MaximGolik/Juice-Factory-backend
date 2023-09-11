@@ -63,6 +63,12 @@ HTML отчет можно открыть в браузере, он находи
 
 `allure serve results`
 
+Для получения результатов тестирования прописанного в Behave в Allure:
+
+`behave -f allure_behave.formatter:AllureFormatter -o results tests/features/`
+
+`allure serve results`
+
 ## Контакты
 
 Email: `makxim582@gmail.com` / `maxlivegame2@yandex.ru`

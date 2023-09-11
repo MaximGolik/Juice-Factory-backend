@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ee8646c-9241-4ddf-85e9-23bb73acd60e" name="Changes" comment="major tests refactor" />
+    <list default="true" id="0ee8646c-9241-4ddf-85e9-23bb73acd60e" name="Changes" comment="readme updated">
+      <change afterPath="$PROJECT_DIR$/tests/features/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/features/environment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/features/steps/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/features/steps/user_login_steps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/features/steps/user_models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/features/steps/user_registration_steps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/features/user_login.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/features/user_registration.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Flask Main" />
+        <option value="Gherkin feature file" />
         <option value="Python Script" />
       </list>
     </option>
@@ -59,28 +72,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/maxli/PycharmProjects/test_juice_factory_backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/maxli/PycharmProjects/test_juice_factory_backend/tests/features/steps",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings module-name="test_juice_factory_backend" is-module-sdk="true">
@@ -90,12 +103,75 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\maxli\PycharmProjects\test_juice_factory_backend\tests\features\steps" />
+      <recent name="C:\Users\maxli\PycharmProjects\test_juice_factory_backend\tests\features\steps1" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\maxli\PycharmProjects\test_juice_factory_backend\tests\features" />
       <recent name="C:\Users\maxli\PycharmProjects\test_juice_factory_backend\tests" />
       <recent name="C:\Users\maxli\test_juice_factory" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for test_items.test_put_item">
+  <component name="RunManager" selected="Behave.user_registration.feature">
+    <configuration name="user_login.feature" type="PyBehaveRunConfigurationType" factoryName="Behave" temporary="true">
+      <module name="test_juice_factory_backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <WHAT_TO_RUN WHAT_TO_RUN="$PROJECT_DIR$/tests/features/user_login.feature" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="user_login.feature:Successful user login" type="PyBehaveRunConfigurationType" factoryName="Behave" temporary="true">
+      <module name="test_juice_factory_backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <WHAT_TO_RUN WHAT_TO_RUN="$PROJECT_DIR$/tests/features/user_login.feature" />
+      <SCENRAIO_NAMES SCENRAIO_NAMES="Successful user login" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="user_registration.feature" type="PyBehaveRunConfigurationType" factoryName="Behave" temporary="true">
+      <module name="test_juice_factory_backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <WHAT_TO_RUN WHAT_TO_RUN="$PROJECT_DIR$/tests/features/user_registration.feature" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="user_registration.feature:Email is not valid" type="PyBehaveRunConfigurationType" factoryName="Behave" temporary="true">
+      <module name="test_juice_factory_backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <WHAT_TO_RUN WHAT_TO_RUN="$PROJECT_DIR$/tests/features/user_registration.feature" />
+      <SCENRAIO_NAMES SCENRAIO_NAMES="Email is not valid" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test_juice_factory_backend" type="PythonConfigurationType" factoryName="Python">
       <module name="test_juice_factory_backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -125,7 +201,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -149,57 +225,6 @@
       <option name="specificationPath" value="C:\Users\maxli\PycharmProjects\test_juice_factory_backend\static\swagger.json" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_items.test_get_all_items" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="test_juice_factory_backend" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_items.test_get_all_items&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest for test_items.test_get_item_by_id" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="test_juice_factory_backend" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_items.test_get_item_by_id&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest for test_items.test_post_item_positive" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="test_juice_factory_backend" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_items.test_post_item_positive&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="pytest for test_items.test_put_item" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="test_juice_factory_backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -217,39 +242,22 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in test_users.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="test_juice_factory_backend" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_users.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <list>
+      <item itemvalue="Behave.user_login.feature" />
+      <item itemvalue="Behave.user_login.feature:Successful user login" />
+      <item itemvalue="Behave.user_registration.feature" />
+      <item itemvalue="Behave.user_registration.feature:Email is not valid" />
       <item itemvalue="Flask server.test_juice_factory_backend" />
       <item itemvalue="Python.test_juice_factory_backend" />
-      <item itemvalue="Python tests.pytest for test_items.test_get_all_items" />
-      <item itemvalue="Python tests.pytest for test_items.test_get_item_by_id" />
-      <item itemvalue="Python tests.pytest for test_items.test_post_item_positive" />
       <item itemvalue="Python tests.pytest for test_items.test_put_item" />
-      <item itemvalue="Python tests.pytest in test_users.py" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Behave.user_registration.feature" />
+        <item itemvalue="Behave.user_registration.feature:Email is not valid" />
+        <item itemvalue="Behave.user_login.feature" />
+        <item itemvalue="Behave.user_login.feature:Successful user login" />
         <item itemvalue="Python tests.pytest for test_items.test_put_item" />
-        <item itemvalue="Python tests.pytest for test_items.test_post_item_positive" />
-        <item itemvalue="Python tests.pytest for test_items.test_get_item_by_id" />
-        <item itemvalue="Python tests.pytest for test_items.test_get_all_items" />
-        <item itemvalue="Python tests.pytest in test_users.py" />
       </list>
     </recent_temporary>
   </component>
@@ -318,7 +326,13 @@
       <workItem from="1693039187888" duration="9481000" />
       <workItem from="1693079127763" duration="42000" />
       <workItem from="1693079182570" duration="4497000" />
-      <workItem from="1693127223850" duration="10283000" />
+      <workItem from="1693127223850" duration="11051000" />
+      <workItem from="1693299088208" duration="68000" />
+      <workItem from="1693394604693" duration="1219000" />
+      <workItem from="1693577423531" duration="1198000" />
+      <workItem from="1694307163416" duration="40000" />
+      <workItem from="1694364224561" duration="7146000" />
+      <workItem from="1694427594306" duration="18847000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit, project backup">
       <created>1680700507854</created>
@@ -348,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693160946044</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="readme updated">
+      <created>1693161394987</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1693161394987</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,7 +403,8 @@
     <MESSAGE value="swagger minor changes, requirements.txt fix" />
     <MESSAGE value="small directory refactor" />
     <MESSAGE value="major tests refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="major tests refactor" />
+    <MESSAGE value="readme updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme updated" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -410,11 +432,14 @@
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$users_schemas.coverage" NAME="users_schemas Coverage Results" MODIFIED="1693160247532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/schemas" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_items_test_post_item_negative.coverage" NAME="pytest for test_items.test_post_item_negative Coverage Results" MODIFIED="1693131050457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_users_test_put_user_positive_as_user.coverage" NAME="pytest for test_users.test_put_user_positive_as_user Coverage Results" MODIFIED="1693130808547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/test_juice_factory_backend$user_login_feature_User_login_with_invalid_password.coverage" NAME="user_login.feature:User login with invalid password Coverage Results" MODIFIED="1694432018679" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_orders_test_add_order.coverage" NAME="pytest for test_orders.test_add_order Coverage Results" MODIFIED="1680945654200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/unit" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_in_test_users_py.coverage" NAME="pytest in test_users.py Coverage Results" MODIFIED="1693160275249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_items_test_get_item_by_id.coverage" NAME="pytest for test_items.test_get_item_by_id Coverage Results" MODIFIED="1693160488829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_items_test_put_item.coverage" NAME="pytest for test_items.test_put_item Coverage Results" MODIFIED="1693160587307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_items_test_put_item.coverage" NAME="pytest for test_items.test_put_item Coverage Results" MODIFIED="1694433546394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/test_juice_factory_backend$user_login_feature.coverage" NAME="user_login.feature Coverage Results" MODIFIED="1694459446381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_users_test_login_user.coverage" NAME="pytest for test_users.test_login_user Coverage Results" MODIFIED="1680709246779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/unit" />
+    <SUITE FILE_PATH="coverage/test_juice_factory_backend$user_registration_feature_Email_is_not_valid.coverage" NAME="user_registration.feature:Email is not valid Coverage Results" MODIFIED="1694461813677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/testFlaskBackEnd$testFlaskBackEnd.coverage" NAME="testFlaskBackEnd Coverage Results" MODIFIED="1678280856305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_tests_users_test_register_user_sucesfully.coverage" NAME="pytest for tests_users.test_register_user_sucesfully Coverage Results" MODIFIED="1680704888576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/unit" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_images_test_upload_image.coverage" NAME="pytest for test_images.test_upload_image Coverage Results" MODIFIED="1680973708535" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/unit" />
@@ -424,9 +449,10 @@
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_orders_test_get_all_orders_negative.coverage" NAME="pytest for test_orders.test_get_all_orders_negative Coverage Results" MODIFIED="1693131763342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_items_test_delete_item.coverage" NAME="pytest for test_items.test_delete_item Coverage Results" MODIFIED="1693131623537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_tests_users_test_register_user.coverage" NAME="pytest for tests_users.test_register_user Coverage Results" MODIFIED="1680708578502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/unit" />
-    <SUITE FILE_PATH="coverage/test_juice_factory_backend$test_juice_factory_backend.coverage" NAME="test_juice_factory_backend Coverage Results" MODIFIED="1693132411508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_users_test_get_user_positive__1_.coverage" NAME="pytest for test_users.test_get_user_positive (1) Coverage Results" MODIFIED="1693158356459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/test_juice_factory_backend$test_juice_factory_backend.coverage" NAME="test_juice_factory_backend Coverage Results" MODIFIED="1694453485381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_items_test_get_all_items.coverage" NAME="pytest for test_items.test_get_all_items Coverage Results" MODIFIED="1693160467078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/test_juice_factory_backend$user_login_feature_Successful_user_login.coverage" NAME="user_login.feature:Successful user login Coverage Results" MODIFIED="1694451938732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_orders_test_get_add_orders_positive.coverage" NAME="pytest for test_orders.test_get_add_orders_positive Coverage Results" MODIFIED="1693131737900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_users_test_delete_user_positive.coverage" NAME="pytest for test_users.test_delete_user_positive Coverage Results" MODIFIED="1693130451444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_orders_test_add_order_positive.coverage" NAME="pytest for test_orders.test_add_order_positive Coverage Results" MODIFIED="1693131722810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
@@ -435,5 +461,6 @@
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_users_test_create_admin.coverage" NAME="pytest for test_users.test_create_admin Coverage Results" MODIFIED="1693128921080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_orders_test_add_order_negative.coverage" NAME="pytest for test_orders.test_add_order_negative Coverage Results" MODIFIED="1693131703825" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_users_test_delete_user.coverage" NAME="pytest for test_users.test_delete_user Coverage Results" MODIFIED="1680788110545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/unit" />
+    <SUITE FILE_PATH="coverage/test_juice_factory_backend$user_registration_feature.coverage" NAME="user_registration.feature Coverage Results" MODIFIED="1694463198306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
