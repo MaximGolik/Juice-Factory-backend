@@ -1,5 +1,6 @@
 # Created by maxli at 10.09.2023
-Feature: User login
+Feature: User login test on Behave
+  @smoke
   Scenario: Successful user login
     Given registered user on "http://127.0.0.1:5000/register"
     | phone_number | password     | email                | name      |
@@ -8,6 +9,7 @@ Feature: User login
     | phone_number | password     |
     | 79877321243  | testPassword |
     Then response code is "200"
+  @smoke
   Scenario: User login with invalid password
     Given registered user on "http://127.0.0.1:5000/register"
     | phone_number | password     | email                | name      |
@@ -16,6 +18,7 @@ Feature: User login
     | phone_number | password     |
     | 79877321243  | testPasrdq21 |
     Then response code is "401"
+  @smoke
   Scenario: User login with invalid phone number
     Given registered user on "http://127.0.0.1:5000/register"
     | phone_number | password     | email                | name      |

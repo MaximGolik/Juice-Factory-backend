@@ -13,7 +13,7 @@ def step_impl(context, url):
         with allure.step("Регистрируем пользователь"):
             data = UserRegister(phone_number=row[0], password=row[1], first_name=row[3], email=row[2]).model_dump()
             r = Response(requests.post(url, json=data))
-            if not r.assert_status_code(400):
+            if not r.response_status_code == 400:
                 r.assert_status_code(201)
 
 @step('user login on "{url}"')
