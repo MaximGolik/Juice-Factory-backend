@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ee8646c-9241-4ddf-85e9-23bb73acd60e" name="Changes" comment="behave added + minor README.md change">
+    <list default="true" id="0ee8646c-9241-4ddf-85e9-23bb73acd60e" name="Changes" comment="behave and README.md minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/features/steps/user_login_steps.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/features/steps/user_login_steps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/features/user_login.feature" beforeDir="false" afterPath="$PROJECT_DIR$/tests/features/user_login.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/features/user_registration.feature" beforeDir="false" afterPath="$PROJECT_DIR$/tests/features/user_registration.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/images.py" beforeDir="false" afterPath="$PROJECT_DIR$/resource/images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/resource/items.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/resource/order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/resource/users.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +80,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -328,7 +329,8 @@
       <workItem from="1694364224561" duration="7146000" />
       <workItem from="1694427594306" duration="19510000" />
       <workItem from="1694520379327" duration="1571000" />
-      <workItem from="1694549191429" duration="497000" />
+      <workItem from="1694549191429" duration="1533000" />
+      <workItem from="1694638031822" duration="3833000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit, project backup">
       <created>1680700507854</created>
@@ -372,7 +374,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694463952071</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="behave and README.md minor changes">
+      <created>1694549721536</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1694549721536</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,7 +417,8 @@
     <MESSAGE value="major tests refactor" />
     <MESSAGE value="readme updated" />
     <MESSAGE value="behave added + minor README.md change" />
-    <option name="LAST_COMMIT_MESSAGE" value="behave added + minor README.md change" />
+    <MESSAGE value="behave and README.md minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="behave and README.md minor changes" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -454,7 +464,7 @@
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_items_test_delete_item.coverage" NAME="pytest for test_items.test_delete_item Coverage Results" MODIFIED="1693131623537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_tests_users_test_register_user.coverage" NAME="pytest for tests_users.test_register_user Coverage Results" MODIFIED="1680708578502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/unit" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_users_test_get_user_positive__1_.coverage" NAME="pytest for test_users.test_get_user_positive (1) Coverage Results" MODIFIED="1693158356459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/test_juice_factory_backend$test_juice_factory_backend.coverage" NAME="test_juice_factory_backend Coverage Results" MODIFIED="1694521221170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/test_juice_factory_backend$test_juice_factory_backend.coverage" NAME="test_juice_factory_backend Coverage Results" MODIFIED="1694642139876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_items_test_get_all_items.coverage" NAME="pytest for test_items.test_get_all_items Coverage Results" MODIFIED="1693160467078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$user_login_feature_Successful_user_login.coverage" NAME="user_login.feature:Successful user login Coverage Results" MODIFIED="1694451938732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/test_juice_factory_backend$pytest_for_test_orders_test_get_add_orders_positive.coverage" NAME="pytest for test_orders.test_get_add_orders_positive Coverage Results" MODIFIED="1693131737900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />

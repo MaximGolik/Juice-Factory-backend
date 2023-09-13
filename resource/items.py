@@ -1,3 +1,5 @@
+import logging
+
 from flask_restful import Resource
 from flask import request
 from models.items_model import Item as ItemModel
@@ -21,6 +23,7 @@ class Item(Resource):
         item = ItemModel.find_by_id(item_id)
         if item:
             return item_schema.dump(item)
+        logging.error(f"Товар с item_id:{item_id} не найден!")
         return {"msg": "Item not found"}, 404
 
     @jwt_required()
@@ -33,10 +36,13 @@ class Item(Resource):
             except ValidationError as err:
                 return err.messages, 400
             try:
+                logging.info(f"Новый товар добавлен!")
                 item.save_to_db()
             except:
+                logging.error(f"Ошибка при добавлении товара")
                 return {"msg": "Error occurred"}
             return item_schema.dump(item), 201
+        logging.error(f"Пользователь с user_id:{user_id} использовал недоступную для него функцию!")
         return {"msg": "You need to be admin"}, 403
 
     # 204 код не передает сообщение
@@ -45,11 +51,14 @@ class Item(Resource):
         user_id = get_jwt_identity()
         user = User.find_by_id(user_id=user_id)
         if not user.isAdmin:
+            logging.error(f"Пользователь с user_id:{user_id} использовал недоступную для него функцию!")
             return {"msg": "You need to be admin"}, 403
         item_id = request.args['item_id']
         item = ItemModel.find_by_id(item_id)
         if not item:
+            logging.error(f"Товар не найден!")
             return {"msg": "Item not found"}, 404
+        logging.info(f"Товар с item_id:{item_id} удален!")
         item.delete_from_db()
         return {}, 204
 
@@ -58,6 +67,7 @@ class Item(Resource):
         user_id = get_jwt_identity()
         user = User.find_by_id(user_id=user_id)
         if not user.isAdmin:
+            logging.error(f"Пользователь с user_id:{user_id} использовал недоступную для него функцию")
             return {"msg": "You need to be admin"}, 403
         data = request.get_json()
         item_id = data["id"]
@@ -67,6 +77,7 @@ class Item(Resource):
         quantity = data["quantity"]
         item = ItemModel.find_by_id(item_id)
         if not item:
+            logging.error(f"Товар не найден!")
             return {"msg": "Item not found"}, 404
         if item:
             item.price = price
@@ -75,6 +86,7 @@ class Item(Resource):
             item.quantity = quantity
         # else:
         #     return item.json()
+        logging.info(f"Данные о товаре с item_id:{item_id} обновлены!")
         item.save_to_db()
 
         return item_schema.dump(item), 200

@@ -1,3 +1,4 @@
+import logging
 import os
 import io
 import zipfile
@@ -21,6 +22,7 @@ class Images(Resource):
         item_id = request.args['item_id']
         item = Item.find_by_id(item_id=str(item_id))
         if not item:
+            logging.error(f"Товар с item_id:{item_id} не найден!")
             return {"msg": "Item for picture not found"}, 404
         images = item.get_images()
         buffer = io.BytesIO()
@@ -40,6 +42,7 @@ class Images(Resource):
             item_id = request.values['item_id']
             item = Item.find_by_id(item_id=str(item_id))
             if not item:
+                logging.error(f"Товар с item_id:{item_id} не найден!")
                 return {"msg": "Item for picture not found"}, 404
             f = request.files['file']
             extension = {f.filename.split(".")[1]}
@@ -49,7 +52,10 @@ class Images(Resource):
                 image = (ImagesForItem(item_id=item_id, filename=filename))
                 item.images.append(image)
                 item.save_to_db()
+                logging.info(f"Картинка к товару {item_id} добавлена")
                 return {"msg": "Image has been loaded"}, 200
+            logging.error(f"Расширение картинки не поддерживается")
             return {"msg": "Image's extension isn't allowed"}, 400
+        logging.error(f"Пользователь с user_id:{user_id} использовал недоступную для него функцию!")
         return {'msg': "You need to be an admin"}, 403
 

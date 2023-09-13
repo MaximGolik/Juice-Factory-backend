@@ -1,6 +1,10 @@
+import logging
 class BaseConfig(object):
     # main config
     DEBUG = True
+
+    #logger config
+    logging.basicConfig(level='INFO', filename="logs.log", filemode='w', format="%(asctime)s %(levelname)s %(message)s")
 
     # database config
     ##todo сменить localhost на db и порт 5433 на 5432 перед docker-compose build

@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime
 
 from email_validator import validate_email, EmailNotValidError
@@ -38,6 +39,7 @@ class UserRegister(Resource):
             return {'msg': 'Phone number is too short'}, 400
         user = User(phone_number, password, first_name, email)
         user.save_to_db()
+        logging.info(f"Пользователь с номером телефона {phone_number} зарегистрирован")
         return {'msg': "User successfully registered"}, 201
 
 
@@ -57,6 +59,7 @@ class UserLogin(Resource):
         if user and User.check_password(phone_number, password):
             access_token = create_access_token(identity=user.id, fresh=True)
             refresh_token = create_refresh_token(identity=user.id)
+            logging.info(f"Пользователь с номером телефона {phone_number} авторизовался")
             return {
                 "access_token": access_token,
                 "refresh_token": refresh_token,
@@ -82,6 +85,7 @@ class UserCreateAdmin(Resource):
             return {"msg": "Email already used"}, 400
         user = User(phone_number, password, first_name, email, isAdmin=True)
         user.save_to_db()
+        logging.info("Создан администратор")
         return {'msg': "Admin is added"}, 201
 
 
@@ -93,9 +97,11 @@ class UserMethods(Resource):
         check_user_id = get_jwt_identity()
         check_user = User.find_by_id(check_user_id)
         if not check_user.isAdmin:
+            logging.error(f"Пользователь с user_id:{check_user_id} использовал недоступную для него функцию!")
             return {'msg': 'You need to be an admin'}, 403
         user = User.find_by_id(user_id)
         if not user:
+            logging.error(f"Пользователь с user_id:{user_id} не найден!")
             return {"msg": "User not found"}, 404
         return user_schema.dump(user), 200
 
@@ -107,10 +113,13 @@ class UserMethods(Resource):
         admin_id = get_jwt_identity()
         admin = User.find_by_id(admin_id)
         if not admin.isAdmin:
+            logging.error(f"Пользователь с user_id:{admin_id} использовал недоступную для него функцию")
             return {'msg': 'You need to an admin'}, 403
         if not user:
+            logging.error(f"Пользователь с user_id:{user_id} не найден!")
             return {"msg": "User not found"}, 404
         user.delete_from_db()
+        logging.info(f"Пользователь с user_id:{user_id} успешно удален!")
         return {"msg": "User deleted successfully"}, 200
 
     @classmethod
@@ -121,9 +130,11 @@ class UserMethods(Resource):
         user_check = User.find_by_id(requester_id)
         if not user_check.id == requester_id:
             if not user_check.isAdmin:
+                logging.error(f"Пользователь с user_id:{requester_id} использовал недоступную для него функцию")
                 return {"msg": "You need to be an admin or it should be your profile"}, 403
         user = User.find_by_id(user_id)
         if not user:
+            logging.error(f"Пользователь с user_id:{user_id} не найден!")
             return {"msg": "User not found"}, 404
         parser = reqparse.RequestParser()
         parser.add_argument("email", type=str, required=False, location="json")
@@ -143,6 +154,7 @@ class UserMethods(Resource):
         if "phone_number" in data:
             user.phone_number = data["phone_number"]
         user.save_to_db()
+        logging.info(f"Данные пользователя с user_id:{user_id} успешно измененны!")
         return {"msg": "User updated"}, 200
 
 
@@ -152,7 +164,9 @@ class ProfileMethods(Resource):
         user_id = get_jwt_identity()
         user = User.find_by_id(user_id)
         if not user:
+            logging.error(f"Пользователь с user_id:{user_id} не найден!")
             return {"msg": "User not found"}, 404
+        logging.info(f"Профиль пользователя с user_id:{user_id} успешно получен!")
         return user_schema.dump(user), 200
 
 
@@ -161,9 +175,11 @@ class RefreshToken(Resource):
     def get(self):
         current_user = get_jwt_identity()
         if not current_user:
+            logging.error(f"Пользователь с user_id:{current_user} не найден!")
             return {"User not found"}, 401
         new_access_token = create_access_token(identity=current_user, fresh=False)
         new_refresh_token = create_refresh_token(identity=current_user)
+        logging.info(f"Refresh token пользователя с user_id:{current_user} успешно создан!")
         return {
             "access_token": new_access_token,
             "refresh_token": new_refresh_token
