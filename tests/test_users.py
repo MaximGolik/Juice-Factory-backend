@@ -82,15 +82,15 @@ def test_delete_user_positive(client, expected_message, expected_code, login_as_
     headers = {
         'Authorization': 'Bearer ' + access_token
     }
-    response = Response(client.delete('user?user_id=1', headers=headers))
-    assert response.response_json == expected_message
+    response = Response(client.delete('user?requested_user_id=1', headers=headers))
     response.assert_status_code(expected_code)
+    assert response.response_json == expected_message
 
 
 @allure.feature('Тестирование методов пользователей')
 @allure.title('Неудачное удаление пользователя')
 @pytest.mark.parametrize('expected_message, expected_code, access_token_type', [
-    ({'msg': 'You need to an admin'}, 403, 'user'),
+    ({'msg': 'You need to be an admin'}, 403, 'user'),
     ({"msg": "User not found"}, 404, 'admin')
 ])
 def test_delete_user_negative(client, expected_message, expected_code, login_as_user, login_as_admin, access_token_type):
@@ -101,7 +101,7 @@ def test_delete_user_negative(client, expected_message, expected_code, login_as_
         headers = {
             'Authorization': 'Bearer ' + access_token
         }
-        response = Response(client.delete('user?user_id=99', headers=headers))
+        response = Response(client.delete('user?requested_user_id=99', headers=headers))
         assert response.assert_status_code(expected_code)
         assert response.response_json == expected_message
 
@@ -115,7 +115,7 @@ def test_get_user_negative(client, expected_code, expected_message, login_as_use
     headers = {
         'Authorization': 'Bearer ' + access_token
     }
-    response = Response(client.get('/user?user_id=1', headers=headers))
+    response = Response(client.get('/user?requested_user_id=1', headers=headers))
     assert response.response_json == expected_message
     assert response.assert_status_code(expected_code)
 
@@ -128,7 +128,7 @@ def test_get_user_positive(client, expected_code, login_as_user, login_as_admin)
     headers = {
         'Authorization': 'Bearer ' + access_token
     }
-    response = Response(client.get('/user?user_id=2', headers=headers))
+    response = Response(client.get('/user?requested_user_id=2', headers=headers))
     response.assert_status_code(expected_code)
     response.validate(users_schemas.UserGetModel)
 
@@ -150,9 +150,10 @@ def test_put_user_positive_as_admin(client, data, login_as_user, login_as_admin,
     headers = {
         'Authorization': 'Bearer ' + access_token
     }
-    response = Response(client.put('/user?user_id=2', json=data, headers=headers))
+    response = Response(client.put('/user?requested_user_id=2', json=data, headers=headers))
     response.assert_status_code(expected_code)
     assert response.response_json == expected_message
+
 
 @allure.feature('Тестирование методов пользователей')
 @allure.title('Обновить информацию пользователя как пользователь')
@@ -166,12 +167,13 @@ def test_put_user_positive_as_admin(client, data, login_as_user, login_as_admin,
      {
         "msg": "User updated"
      }, 200)])
-def test_put_user_positive_as_user(client, data, login_as_another_user, login_as_user, expected_code, expected_message):
+def test_put_user_positive_as_user(client, data, login_as_admin, login_as_another_user, login_as_user, expected_code, expected_message):
+
     access_token = login_as_user
     headers = {
         'Authorization': 'Bearer ' + access_token
     }
-    response = Response(client.put('/user?user_id=2', json=data, headers=headers))
+    response = Response(client.put('/user?requested_user_id=3', json=data, headers=headers))
     assert response.response_json == expected_message
     assert response.assert_status_code(expected_code)
 
@@ -183,6 +185,6 @@ def test_get_user_profile_successful(client, login_as_user):
     headers = {
         'Authorization': 'Bearer ' + access_token
     }
-    response = Response(client.get('/profile?user_id=1', headers=headers))
+    response = Response(client.get('/profile?requested_user_id=1', headers=headers))
     response.assert_status_code(200)
     response.validate(users_schemas.UserProfileModel)

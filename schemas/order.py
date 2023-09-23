@@ -13,6 +13,6 @@ class OrderSchema(ma.SQLAlchemyAutoSchema):
 class UsersOrdersSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Order
-        load_only = ("user_id",)
+        load_only = ("requested_user_id",)
         dump_only = ('id', 'status')
         include_fk = True

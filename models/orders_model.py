@@ -20,7 +20,7 @@ class ItemsInOrder(db.Model):
 class Order(db.Model):
     __tablename__ = "orders"
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column("user_id", db.Integer, db.ForeignKey("users.id"))
+    user_id = db.Column("requested_user_id", db.Integer, db.ForeignKey("users.id"))
     status = db.Column(db.String(12), nullable=True)
 
     user = db.relationship("User")

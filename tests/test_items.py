@@ -56,6 +56,7 @@ def test_post_item_negative(client, login_as_user, data):
     response.assert_status_code(403)
 
 
+#todo переписать тест под параметризованный
 @allure.feature('Тестирование методов товаров')
 @allure.title('Обновить информацию о товаре')
 def test_put_item(client, login_as_user, login_as_admin, add_item):
@@ -76,7 +77,7 @@ def test_put_item(client, login_as_user, login_as_admin, add_item):
     }
     response = Response(client.put('/item', json=data, headers=headers))
     response.assert_status_code(403)
-    assert response.response_json == {"msg": "You need to be admin"}
+    assert response.response_json == {"msg": "You need to be an admin"}
 
     headers = {
         'Authorization': 'Bearer ' + admin_access_token
@@ -86,6 +87,7 @@ def test_put_item(client, login_as_user, login_as_admin, add_item):
     response.validate(items_schemas.ItemModel)
 
 
+#todo переписать тест под параметризованный
 @allure.feature('Тестирование методов товаров')
 @allure.title('Удалить товар')
 def test_delete_item(client, login_as_user, login_as_admin, add_item):
@@ -99,7 +101,7 @@ def test_delete_item(client, login_as_user, login_as_admin, add_item):
     }
     response = client.delete('/item?item_id=1', headers=headers)
     assert response.status_code == 403
-    assert response.json == {"msg": "You need to be admin"}
+    assert response.json == {"msg": "You need to be an admin"}
 
     headers = {
         'Authorization': 'Bearer ' + admin_access_token
