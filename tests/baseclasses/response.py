@@ -30,4 +30,18 @@ class Response:
                                                              f"\nMessage: {self.response_json}"
         return self
 
+    def assert_message(self, message):
+        if isinstance(message, list):
+            assert self.response_json in message, f"\nWrong message.\nRequest: {self.response.request}" \
+                                                  f"\nActual message: {self.response_json}\n" \
+                                                  f"\nExpected code: {message}" \
+                                                  f"\nMessage: {self.response_json}"
+        else:
+            assert self.response_json == message, f"\nWrong message.\nRequest: {self.response.request}" \
+                                                  f"\nActual message: {self.response_json}\n" \
+                                                  f"\nExpected code: {message}" \
+                                                  f"\nMessage: {self.response_json}"
+
+
+
 

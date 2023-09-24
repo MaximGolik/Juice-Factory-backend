@@ -3,6 +3,7 @@ class BaseConfig(object):
     # main config
     DEBUG = True
 
+
     #logger config
     logging.basicConfig(level='INFO', filename="logs.log", filemode='w', format="%(asctime)s %(levelname)s %(message)s")
 

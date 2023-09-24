@@ -26,11 +26,11 @@ def rights_check(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         requester_id = get_jwt_identity()
-        requested_user_id = request.args['requested_user_id']
-        user = User.find_by_id(requested_user_id)
+        user_id = request.args['user_id']
+        user = User.find_by_id(user_id)
         requester = User.find_by_id(requester_id)
         if not user:
-            logging.error(f"Пользователь c user_id: {requested_user_id} не найден")
+            logging.error(f"Пользователь c user_id: {user_id} не найден")
             return {"msg": "User not found"}, 404
         if requester_id != user.id:
             logging.error(f"ID не совпадают, {requester_id} != {user.id}")

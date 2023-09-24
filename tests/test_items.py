@@ -11,6 +11,7 @@ def test_get_all_items(client, add_item):
     assert response.assert_status_code(200)
     # response.validate(items_schemas.ItemsModels)
 
+
 @allure.feature('Тестирование методов товаров')
 @allure.title('Получить товар по его id')
 @pytest.mark.parametrize('item_id', [1])
@@ -56,11 +57,10 @@ def test_post_item_negative(client, login_as_user, data):
     response.assert_status_code(403)
 
 
-#todo переписать тест под параметризованный
 @allure.feature('Тестирование методов товаров')
 @allure.title('Обновить информацию о товаре')
-def test_put_item(client, login_as_user, login_as_admin, add_item):
-    user_access_token = login_as_user
+@pytest.mark.parametrize('expected_code', [200])
+def test_put_item_positive(client, login_as_admin, add_item, expected_code):
     admin_access_token = login_as_admin
 
     assert add_item == 201
@@ -72,47 +72,75 @@ def test_put_item(client, login_as_user, login_as_admin, add_item):
         "quantity": 5,
         "description": "Просто неплохой апельсиновый сок"
     }
-    headers = {
-        'Authorization': 'Bearer ' + user_access_token
-    }
-    response = Response(client.put('/item', json=data, headers=headers))
-    response.assert_status_code(403)
-    assert response.response_json == {"msg": "You need to be an admin"}
 
     headers = {
         'Authorization': 'Bearer ' + admin_access_token
     }
     response = Response(client.put('/item', json=data, headers=headers))
-    response.assert_status_code(200)
+    response.assert_status_code(expected_code)
     response.validate(items_schemas.ItemModel)
 
 
-#todo переписать тест под параметризованный
+@allure.feature('Тестирование методов товаров')
+@allure.title('Не обновить информацию о товаре')
+@pytest.mark.parametrize('expected_code, expected_message', [(403, {"msg": "You need to be an admin"})])
+def test_put_item_negative(client, login_as_user, add_item, expected_code, expected_message):
+    access_token = login_as_user
+
+    assert add_item == 201
+
+    data = {
+        "id": 1,
+        "title": "Отредактированное",
+        "price": 400.0,
+        "quantity": 5,
+        "description": "Просто неплохой апельсиновый сок"
+    }
+    headers = {
+        'Authorization': 'Bearer ' + access_token
+    }
+    response = Response(client.put('/item', json=data, headers=headers))
+    response.assert_status_code(expected_code)
+    response.assert_message(expected_message)
+
+
 @allure.feature('Тестирование методов товаров')
 @allure.title('Удалить товар')
-def test_delete_item(client, login_as_user, login_as_admin, add_item):
-    user_access_token = login_as_user
+@pytest.mark.parametrize('expected_code', [204])
+def test_delete_item_positive(client, login_as_admin, add_item, expected_code):
     admin_access_token = login_as_admin
 
     assert add_item == 201
 
     headers = {
-        'Authorization': 'Bearer ' + user_access_token
-    }
-    response = client.delete('/item?item_id=1', headers=headers)
-    assert response.status_code == 403
-    assert response.json == {"msg": "You need to be an admin"}
-
-    headers = {
         'Authorization': 'Bearer ' + admin_access_token
     }
     response = client.delete('/item?item_id=1', headers=headers)
-    assert response.status_code == 204
+    assert response.status_code == expected_code
+
+
+@allure.feature('Тестирование методов товаров')
+@allure.title('Не удалить товар')
+@pytest.mark.parametrize('expected_code, expected_message', [(403, {"msg": "You need to be an admin"}),
+                                                             (404, {"msg": "Item not found"})])
+def test_delete_item_negative(client, login_as_admin, login_as_user, add_item, expected_code, expected_message):
+    access_token = login_as_user
+    if expected_code == 404:
+        access_token = login_as_admin
+
+    assert add_item == 201
+
+    headers = {
+        'Authorization': 'Bearer ' + access_token
+    }
+    response = Response(client.delete('/item?item_id=1', headers=headers))
+    response.assert_status_code(expected_code)
+    response.assert_message(expected_message)
 
     # response = Response(client.delete('/item?item_id=1', headers=headers))
-    response = client.delete('/item?item_id=1', headers=headers)
-    assert response.status_code == 404
-    assert response.json == {"msg": "Item not found"}
+    response = Response(client.delete('/item?item_id=1', headers=headers))
+    response.assert_status_code(expected_code)
+    response.assert_message(expected_message)
 
 
 

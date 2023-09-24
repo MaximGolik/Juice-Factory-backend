@@ -96,10 +96,10 @@ class UserMethods(Resource):
     @jwt_required()
     @admin_check
     def get(cls):
-        user_id = request.args['requested_user_id']
+        user_id = request.args['user_id']
         user = User.find_by_id(user_id)
         if not user:
-            logging.error(f"Пользователь с requested_user_id:{user_id} не найден!")
+            logging.error(f"Пользователь с user_id:{user_id} не найден!")
             return {"msg": "User not found"}, 404
         return user_schema.dump(user), 200
 
@@ -107,7 +107,7 @@ class UserMethods(Resource):
     @jwt_required()
     @admin_check
     def delete(cls):
-        user_id = request.args['requested_user_id']
+        user_id = request.args['user_id']
         user = User.find_by_id(user_id)
         if not user:
             logging.error(f"Пользователь с user_id:{user_id} не найден!")
@@ -120,7 +120,7 @@ class UserMethods(Resource):
     @jwt_required()
     @rights_check
     def put(cls):
-        user_id = request.args['requested_user_id']
+        user_id = request.args['user_id']
         user = User.find_by_id(user_id)
         if not user:
             logging.error(f"Пользователь с user_id:{user_id} не найден!")
@@ -143,7 +143,7 @@ class UserMethods(Resource):
         if "phone_number" in data:
             user.phone_number = data["phone_number"]
         user.save_to_db()
-        logging.info(f"Данные пользователя с requested_user_id:{user_id} успешно изменены!")
+        logging.info(f"Данные пользователя с user_id:{user_id} успешно изменены!")
         return {"msg": "User updated"}, 200
 
 
@@ -153,9 +153,9 @@ class ProfileMethods(Resource):
         user_id = get_jwt_identity()
         user = User.find_by_id(user_id)
         if not user:
-            logging.error(f"Пользователь с requested_user_id:{user_id} не найден!")
+            logging.error(f"Пользователь с user_id:{user_id} не найден!")
             return {"msg": "User not found"}, 404
-        logging.info(f"Профиль пользователя с requested_user_id:{user_id} успешно получен!")
+        logging.info(f"Профиль пользователя с user_id:{user_id} успешно получен!")
         return user_schema.dump(user), 200
 
 
@@ -164,11 +164,11 @@ class RefreshToken(Resource):
     def get(self):
         current_user = get_jwt_identity()
         if not current_user:
-            logging.error(f"Пользователь с requested_user_id:{current_user} не найден!")
+            logging.error(f"Пользователь с user_id:{current_user} не найден!")
             return {"User not found"}, 401
         new_access_token = create_access_token(identity=current_user, fresh=False)
         new_refresh_token = create_refresh_token(identity=current_user)
-        logging.info(f"Refresh token пользователя с requested_user_id:{current_user} успешно создан!")
+        logging.info(f"Refresh token пользователя с user_id:{current_user} успешно создан!")
         return {
             "access_token": new_access_token,
             "refresh_token": new_refresh_token

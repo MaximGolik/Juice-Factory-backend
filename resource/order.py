@@ -23,7 +23,7 @@ class OrdersList(Resource):
     @admin_check
     def get(self):
         admin_id = get_jwt_identity()
-        logging.info(f"Aдминистратор с requested_user_id:{admin_id} получил список всех заказов!")
+        logging.info(f"Aдминистратор с user_id:{admin_id} получил список всех заказов!")
         return {'orders': order_scheme_list.dumps(OrderModel.find_all())}, 200
 
 
@@ -94,7 +94,7 @@ class OrdersOneUser(Resource):
     @jwt_required()
     @rights_check
     def get(self):
-        requested_user_id = request.args['requested_user_id']
+        requested_user_id = request.args['user_id']
         orders = OrderModel.find_all_by_user_id(user_id=requested_user_id)
         order_list = [users_orders_scheme_list.dump(order) for order in orders]
         order_details_list = [order.get_order_details() for order in orders]
